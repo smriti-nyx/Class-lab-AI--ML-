@@ -27,13 +27,13 @@ y = np.array([
     72, 75, 78, 85, 88, 92, 95, 98, 105, 112
 ])
 
-m = len(y)  #[1, 600, 2]
+m = len(y)   #   m =20 [1, 600, 2]
 X = np.c_[np.ones(m), X]     #(1 × θ₀) + (area × θ₁) + (bedrooms × θ₂) =y 
 theta = np.zeros(X.shape[1])  #[ 0, 0,0 ]
-alpha = 0.00000001            
-iterations = 1000
-def compute_cost(X, y, theta):
-    predictions = X.dot(theta)  # [1 * theta not , area * theta 1 , rooms* theta 2 ]
+alpha = 0.00000001      #learning rate        
+iterations = 1000.       #1000 times loop ran 
+def compute_cost(X, y, theta):  #function to find the cost of the house 
+    predictions = X.dot(theta)  # [1 * theta not , area * theta 1 , rooms* theta 2 ] =y(output)
     cost = (1 / (2 * m)) * np.sum((predictions - y) ** 2)
     return cost
 for i in range(iterations):
