@@ -1,3 +1,6 @@
+#Linear regression
+
+#import numpy as np
 import numpy as np
 X = np.array([
     [600, 2],
@@ -12,7 +15,7 @@ X = np.array([
     [1050, 4],
     [1100, 4],
     [1150, 4],
-    [1200, 4],
+    [1200, 3],
     [1250, 5],
     [1300, 5],
     [1350, 5],
@@ -27,13 +30,13 @@ y = np.array([
     72, 75, 78, 85, 88, 92, 95, 98, 105, 112
 ])
 
-m = len(y)   #   m =20 [1, 600, 2]
-X = np.c_[np.ones(m), X]     #(1 × θ₀) + (area × θ₁) + (bedrooms × θ₂) =y 
+m = len(y)  #[1, 600, 2]
+X = np.c_[np.ones(m), X]     #(1 × θ₀) + (area × θ₁) + (bedrooms × θ₂) =y
 theta = np.zeros(X.shape[1])  #[ 0, 0,0 ]
-alpha = 0.00000001      #learning rate        
-iterations = 1000.       #1000 times loop ran 
-def compute_cost(X, y, theta):  #function to find the cost of the house 
-    predictions = X.dot(theta)  # [1 * theta not , area * theta 1 , rooms* theta 2 ] =y(output)
+alpha = 0.00000001
+iterations = 1000
+def compute_cost(X, y, theta):
+    predictions = X.dot(theta)  # [1 * theta not , area * theta 1 , rooms* theta 2 ]
     cost = (1 / (2 * m)) * np.sum((predictions - y) ** 2)
     return cost
 for i in range(iterations):
